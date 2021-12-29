@@ -171,3 +171,202 @@ let diceRoll: dice;
 diceRoll = 1; //* Valid
 diceRoll = 2; //* Valid
 diceRoll = 7; //* Invalid
+
+// You can also use boolean values when defining literal types, or any combination types.
+
+// Collection types in TypeScript
+// The object types are all class, interface, array and literal types (anything that is not a primitive type.) For
+// now, let's look at the array and Tuple types.
+
+// Arrays
+// TypeScript, like JavaScript, allows you to work with arrays. Arrays can be written in one of two ways. In the
+// first, you use the type of the elements followed by square brackets ([]) to denote an array of that element type:
+
+let list: number[] = [1, 2, 3];
+
+// The second way uses a generic Array type, using the syntax Array<Type>
+
+let list: Array<number> = [1, 2, 3];
+
+// There is no advantage to using one over the other so it's up to you to decide wich syntax to use
+
+//Tuples
+// Having an array of the same value types is useful, but sometimes you have an array that contains values of
+// mixed types
+// For that purpose, TypeScript provides the Tuple type. To declare a Tuple, use the syntax
+// variableName: [type, type, ...]
+
+let person1: [string, number] = ["Marcia", 35];
+
+let person2: [string, number] = ["Marcia", 35, true];
+
+let person3: [string, number] = [35, "Marcia"];
+
+/*  EXERCISE 1
+    TODO: Modify the code to add types to the variable declarations. 
+    The resulting JavaScript should look the same as the original example when you're done. */
+
+// let firstName;
+// let lastName;
+// let fullName;
+// let age;
+// let ukCitizen;
+
+// firstName = 'Rebecca';
+// lastName = 'Smith';
+// age = 42;
+// ukCitizen = false;
+// fullName = firstName + " " + firstName;
+
+// if (ukCitizen) {
+//     console.log("My name is " + fullName + ", I'm " + age + ", and I'm a citizen of the United Kingdom.");
+// } else {
+//     console.log("My name is " + fullName + ", I'm " + age + ", and I'm not a citizen of the United Kingdom.");
+// }
+
+let firstName: string;
+let lastName: string;
+let fullName: string;
+let age: number;
+let ukCitizen: boolean;
+
+firstName = "Rebecca";
+lastName = "Smith";
+age = 42;
+ukCitizen = false;
+fullName = firstName + " " + firstName;
+
+if (ukCitizen) {
+  console.log(
+    "My name is " +
+      fullName +
+      ", I'm " +
+      age +
+      ", and I'm a citizen of the United Kingdom."
+  );
+} else {
+  console.log(
+    "My name is " +
+      fullName +
+      ", I'm " +
+      age +
+      ", and I'm not a citizen of the United Kingdom."
+  );
+}
+
+/* EXERCISE 2
+   TODO: Run the code as is and then modify it to have strongly typed variables. 
+   Then, address any errors you find so that the result returned to a is 12. */
+
+//  let x;
+//  let y;
+//  let a;
+
+//  x = 'five';
+//  y = 7;
+//  a = x + y;
+
+//  console.log(a);
+
+let x: number;
+let y: number;
+let a: number;
+
+x = 5;
+y = 7;
+a = x + y;
+
+console.log(a);
+
+// Exercise 3: Implement an enum type
+
+/* EXERCISE 3
+   TODO: In the following code, implement an enum type called Season that represents 
+   the constants "Fall", "Winter", "Spring", and "Summer". Then, update the function so 
+   you can pass in the season by referencing an item in the enum, for example 
+   Season.Fall, instead of the literal string "Fall". */
+
+// function whichMonths(season) {
+//   let monthsInSeason: string;
+//   switch (season) {
+//     case "Fall":
+//       monthsInSeason = "September to November";
+//       break;
+//     case "Winter":
+//       monthsInSeason = "December to February";
+//       break;
+//     case "Spring":
+//       monthsInSeason = "March to May";
+//       break;
+//     case "Summer":
+//       monthsInSeason = "June to August";
+//   }
+//   return monthsInSeason;
+// }
+
+// console.log(whichMonths("Fall"));
+
+enum Season {
+  "Fall",
+  "Winter",
+  "Spring",
+  "Summer",
+}
+
+const whichMonths = (season: Season) => {
+  let monthsInSeason: string;
+
+  switch (season) {
+    case Season.Fall:
+      monthsInSeason = "September to November";
+    case Season.Winter:
+      monthsInSeason = "December to February";
+    case Season.Spring:
+      monthsInSeason = "March to May";
+    case Season.Summer:
+      monthsInSeason = "June to August";
+  }
+};
+
+// Otro agregado para resumir todavia mas el codigo seria con un diccionario
+
+// const months = {
+//   [Season.Fall]: "September to November",
+//   [Season.Winter]: "December to February",
+//   [Season.Spring]: "March to May",
+//   [Season.Summer]: "June to August",
+// };
+
+// const whichMonths = (season: Season) => {
+//   let monthsInSeason: string;
+//   return months[season];
+// };
+
+console.log(whichMonths(Season.Fall));
+
+// Exercise 4: Declare an array type
+
+/* EXERCISE 4
+   TODO: Declare the array as the type to match the type of the items in the array. */
+
+//  let randomNumbers;
+//  let nextNumber;
+//  for (let i = 0; i < 10; i++) {
+//      nextNumber = Math.floor(Math.random() * (100 - 1)) + 1;
+//      randomNumbers.push(nextNumber);
+//  }
+
+//  console.log(randomNumbers);
+
+/* EXERCISE 4
+   TODO: Declare the array as the type to match the type of the items in the array. */
+
+let randomNumbers: number[] = [];
+let nextNumber: number;
+
+for (let i = 0; i < 10; i++) {
+  nextNumber = Math.floor(Math.random() * (100 - 1)) + 1;
+  randomNumbers.push(nextNumber);
+}
+
+console.log(randomNumbers);
