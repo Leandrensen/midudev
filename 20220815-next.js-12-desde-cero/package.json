@@ -1,0 +1,20 @@
+{
+  "name": "20220815-next.js-12-desde-cero",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "eslint-config-next": "^12.3.4",
+    "next": "^12.3.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "eslint": "9.16.0"
+  }
+}
